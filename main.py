@@ -13,10 +13,10 @@ from sklearn.metrics import mean_squared_error
 import csv
 
 
-# First come up with some vague rule for house prices based on two parameters.
+# First come up with some function that you would like to try to learn through the two methods.
+# can be fun to play around with this and also the domain (lower down in code) to see how this affects the error in learning.
 
-#d = dist_from_centre
-#a = area_of_house
+
 
 def price(a,d):
     return np.log(a+1) + a**2 -3*a*d - np.log(a*d + 1)
@@ -64,7 +64,7 @@ df_test = pd.DataFrame(data = {"x": LstT1, "y": LstM1, "price": PriceTest1})
 #Not sure if dataloader likes csv files. So probably easier to define a custom data class.
 # Work later could potentially be avoided by defining a collate_fn here as well but
 #didn't do this to avoid complications here.
-# For more on custom datasets see pytorch website tutorial on this.
+# Found more good info on custom datasets on the pytorch website tutorial.
 
 class Dataclass(Dataset): #data class needs init, len and getitem.
     def __init__(self, data_table):
@@ -220,7 +220,7 @@ j = Results[:,2] # last is output
 
 
 p = [list(map(float,i)) for i in h]
-w = [float(i) for i in j] #different format cos of one output
+w = [float(i) for i in j] #different format because of one output vs multiple inputs
 X = np.array(p)
 Y = np.array(w)
 
@@ -239,7 +239,7 @@ Model1 = XGBRegressor(objective = 'reg:squarederror', learning_rate = 0.05, n_es
 #print("MSE: %.2f" % mse)
 
 #Model1.save_model('model.txt') #if we are using randomly generated datasets for training we want to save
-model2 = XGBRegressor() #so we don't get a different xg everytime we run code.
+model2 = XGBRegressor() #so we don't get a different xg-model everytime we run code.
 model2.load_model('model.txt')
 
 
