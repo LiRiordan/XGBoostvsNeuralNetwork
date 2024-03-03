@@ -1,12 +1,17 @@
 # XGBoostvsNeuralNetwork
-Program written for comparing XGBoost and NN in learning a given function
+Program written for comparing XGBoost and NN in learning a given function depending on two parameters.
+
+Given f(x:float ,y: float ) -> float and a square domain in x and y we use a Neural Network and XGBoost to learn this function.
 
 This was written for a presentation given at the Heilbronn doctoral programme summer school in 2022.
-We were aiming to justify our use of XGBoost in a project over a Neural Network. Unfortunately the graphs showed the opposite.
 
-Some potential reasons for this might be, our data was sometimes discrete whereas the program above uses continuous functions, or also that I have no idea
-how to tune the parameters of XGBoost. Could also have been that the Neural network was trained or the entire train journey (no pun intended) from Bath to Edinburgh whereas
-xgboost was given the journey from the train to the accomodation to learn this.
+We use this to show that it takes a Neural network a significantly longer period of time to learn this function to the same error. 
 
-Never-the-less I found it a useful project for learning some ML techniques and occasionally look back on it to remind myself of how to do things (though I'm sure it contains
-many many errors and is not efficient).
+The code is in the following sections:
+1. Data preprocessing
+2. Preparing the Neural network
+3. Training the Neural network
+4. Training XGBoost
+5. Reformating the data and models to allow them to be plotted as functions
+6. Plot errors and display time needed to learn function from XGBoost and NN
+
